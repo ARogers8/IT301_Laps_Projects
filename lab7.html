@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab 7</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    body {
+      display: flex;
+      flex-direction: row;
+    }
+
+
+    #sidebar {
+      flex: 0 0 150px; 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 10px;
+      background-color: #e99205;
+      font-size: 50px;
+    }
+
+    
+    #photos {
+      flex: 1 1 auto;         
+      overflow-y: auto;        
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      gap: 2px;
+    }
+
+    #photos img {
+      height: 100px;           
+      flex-grow: 1;          
+    }
+  </style>
+</head>
+<body>
+  <div id="sidebar">
+    <span>&#x1F4F7;</span>
+    <span>&#x1F5C4;&#xfe0f;</span>
+    <span>&#x2764;&#xfe0f;</span>
+    <span>&#x1F5D1;&#xfe0f;</span>
+  </div>
+
+  <div id="photos">
+    <img src="https://picsum.photos/123/100" random=1>
+    <img src="https://picsum.photos/321/100" random=1>
+    <img src="https://picsum.photos/234/100" random=1>
+    <img src="https://picsum.photos/324/100" random=1>
+    <img src="https://picsum.photos/253/100" random=1>
+    <img src="https://picsum.photos/291/100" random=1>
+    <img src="https://picsum.photos/157/100" random=1>
+    <img src="https://picsum.photos/247/100" random=1>
+    <img src="https://picsum.photos/309/100" random=1>
+    <img src="https://picsum.photos/132/100" random=1>
+    <img src="https://picsum.photos/154/100" random=1>
+    <img src="https://picsum.photos/109/100" random=1>
+    <img src="https://picsum.photos/129/100" random=1>
+    <img src="https://picsum.photos/149/100" random=1>
+    <img src="https://picsum.photos/169/100" random=1>
+    <img src="https://picsum.photos/199/100" random=1>
+    <img src="https://picsum.photos/209/100" random=1>
+    <img src="https://picsum.photos/239/100" random=1>
+    <img src="https://picsum.photos/269/100" random=1>
+    <img src="https://picsum.photos/299/100" random=1>
+    <img src="https://picsum.photos/309/100" random=1>
+    <img src="https://picsum.photos/329/100" random=1>
+    <img src="https://picsum.photos/359/100" random=1>
+    <img src="https://picsum.photos/399/100" random=1>
+    <img src="https://picsum.photos/214/100" random=1>
+    <img src="https://picsum.photos/139/100" random=1>
+    <img src="https://picsum.photos/192/100" random=1>
+    <img src="https://picsum.photos/270/100" random=1>
+  </div>
+</body>
+</html>
