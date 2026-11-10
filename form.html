@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    form {
+      background-color: white;
+      padding: 24px;
+      border-radius: 8px;
+      width: 320px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      box-sizing: border-box;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #034694;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* Password rules section is hidden at first */
+    #password-rules {
+      display: none;
+      margin: 8px 0 0 0;
+      padding-left: 20px;
+      font-size: 14px;
+    }
+
+    .invalid {
+      color: red;
+    }
+
+    .valid {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="signup-form">
+    <h2>Sign Up</h2>
+
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email (e.g. you@example.com)" required>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="Create a password" required>
+
+    <!-- Password rules (hidden until the user starts typing) -->
+    <ul id="password-rules">
+      <li id="rule-length" class="invalid">At least 6 characters</li>
+      <li id="rule-special" class="invalid">Must include a special character (!@#$...)</li>
+      <li id="rule-uppercase" class="invalid">Must include an uppercase letter (A-Z)</li>
+    </ul>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    const form = document.getElementById("signup-form");
+    const passwordInput = document.getElementById("password");
+    const rules = document.getElementById("password-rules");
+    const ruleLength = document.getElementById("rule-length");
+    const ruleSpecial = document.getElementById("rule-special");
+    const ruleUppercase = document.getElementById("rule-uppercase");
+
+    // A. Form submit event
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      window.location.href = "success.html";
+    });
+
+    // B. Password input event
+    passwordInput.addEventListener("input", function () {
+      const password = passwordInput.value;
+
+      // Show the rules once the user starts typing
+      rules.style.display = "block";
+
+      const hasLength = password.length >= 6;
+      const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+      const hasUppercase = /[A-Z]/.test(password);
+
+      ruleLength.classList.toggle("valid", hasLength);
+      ruleLength.classList.toggle("invalid", !hasLength);
+
+      ruleSpecial.classList.toggle("valid", hasSpecial);
+      ruleSpecial.classList.toggle("invalid", !hasSpecial);
+
+      ruleUppercase.classList.toggle("valid", hasUppercase);
+      ruleUppercase.classList.toggle("invalid", !hasUppercase);
+    });
+  </script>
+
+</body>
+</html>
