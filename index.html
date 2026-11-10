@@ -1,155 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <header><center>IT301 Labs and Projects</center></header>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posts </title>
-
-    <style>
-       body {
-          background-color: #f0f2f5;
-          font-family: Helvetica, Arial, sans-serif;
-       }
-
-       form {
-          min-height: 180px;
-       }
-
-       article, form {
-          background-color: #ffffff;
-          border-radius: 8px;
-          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-          padding: 12px 16px;
-          margin-bottom: 16px;
-          max-width: 680px;
-          margin-left: auto;
-          margin-right: auto;
-       }
-
-       h2 {
-          color: #050505;
-          font-size: 0.9375rem;
-          font-weight: 600;
-          margin: 0 0 4px 0;
-       }
-
-       p {
-          color: #050505;
-          font-size: 0.9375rem;
-          line-height: 1.3333;
-          margin: 8px 0 0 0;
-       }
-    </style>
+    <title>exploring html tags</title>
 </head>
-
 <body>
-<h1> Welcome to my Posts page! </h1>
-
-    <form action="#">
-
-        <label for="userID">Select User:</label>
-        <select id="userID">
-            <option value="">--Please choose an option--</option>
-            <option value="1">User 1</option>
-            <option value="2">User 2</option>
-            <option value="3">User 3</option>
-            <option value="4">User 4</option>
-            <option value="5">User 5</option>
-            <option value="6">User 6</option>
-            <option value="7">User 7</option>
-        </select>
-
-        <button type="button" id="filterBtn">Filter</button>
-
+    <h1>IT301 Labs and Projects</h1>
+    <nav>
+        <a href="styling with CSS.html">Lab 3: Styling with CSS</a>
         <br><br>
-
-        <label for="displayUserID">Enter User ID:</label>
-        <input type="number" id="displayUserID" min="1" max="10">
-
-        <button type="button" id="displayUserBtn">Display User Posts</button>
-
+         <a href="lab5.html">Lab 5: Letter</a>
+         <br><br>
+         <a href="lab6.html">Lab 6: flexbox</a>
+         <br><br>
+          <a href="lab7.html">Lab 7: Masonry</a>
+         <br><br>
+          <a href="position.html">Lab 8: Position</a>
+         <br><br>
+         <a href="project1.html">Project 1 chelsea football club website where it has each players injury status publicly rating then a breakdown of week to week rating schedule all that stuff.</a>
+        <a href="https://canvas.jmu.edu/courses/2194088">Class Canvas Page</a>
         <br><br>
+        <a href="lab11.html">Lab 11: Mouse Events</a>
+        <br><br>
+         <a href="lab12.html">Lab 12: JavaScript</a>
+         <br><br>
+          <a href="lab14.html">Lab 14: Random User Profile</a>
+          <br><br>
+          <a href="form.html">Lab 16: Sign Up Form</a>
+    </nav>
+    <br>
+   
+    <article>Lab 1: My First Page</article>
+    <article>Lab 2: Semantics</article>
+    <article>Lab 3: Styling with CSS</article>
+    <article>Lab 4: Style the content of your website using CSS.</article>
+    <article>Lab 5: Letter </article>
+    <main>
+        <p>
+            My name is Andrew I'm am IT major and a big fan of the Chelsea football club in london there season just started and they are currently 2-0. 
+        </p>
 
-        <label for="postID">Enter Post ID:</label>
-        <input type="number" id="postID" min="1" max="100">
-
-        <button type="button" id="findBtn">Find</button>
-
-    </form>
-        
-    <script>
-    let posts = [];
-
-    fetch('https://jsonplaceholder.typicode.com/posts')
-        .then(response => response.json())
-        .then(data => {
-            posts = data;
-            console.table(posts);
-            posts.forEach(post => displayPosts(post));
-        })
-        .catch(error => console.error('Error fetching posts:', error));
-
-    function displayPosts(post) {
-        const article = document.createElement('article');
-        const title = document.createElement('h2');
-        title.textContent = post.title;
-        const body = document.createElement('p');
-        body.textContent = post.body;
-        const userId = document.createElement('p');
-        userId.textContent = `User ID: ${post.userId}`;
-        const postId = document.createElement('p');
-        postId.textContent = `Post ID: ${post.id}`;
-        article.appendChild(title);
-        article.appendChild(body);
-        article.appendChild(userId);
-        article.appendChild(postId);
-        document.body.appendChild(article);
-    }
-
-    document.getElementById('filterBtn').addEventListener('click', () => {
-        const userID = document.getElementById('userID').value;
-        if (userID) {
-            fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userID}`)
-                .then(response => response.json())
-                .then(userPosts => {
-                    console.table(userPosts);
-                })
-                .catch(error => console.error('Error fetching posts:', error));
-        }
-    });
-    document.getElementById('displayUserBtn').addEventListener('click', () => {
-        const userID = document.getElementById('displayUserID').value;
-        if (userID) {
-            fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userID}`)
-                .then(response => response.json())
-                .then(userPosts => {
-                    document.querySelectorAll('article').forEach(article => article.remove());
-                    userPosts.forEach(post => displayPosts(post));
-                })
-                .catch(error => console.error('Error fetching posts:', error));
-        }
-    });
-
-    document.getElementById('findBtn').addEventListener('click', () => {
-        const postID = document.getElementById('postID').value;
-        if (postID) {
-            fetch(`https://jsonplaceholder.typicode.com/posts/${postID}`)
-                .then(response => response.json())
-                .then(post => {
-                    document.querySelectorAll('article').forEach(article => article.remove());
-                    if (post.id) {
-                        displayPosts(post);
-                    } else {
-                        const article = document.createElement('article');
-                        article.innerHTML = `<p>Post ${postID} not found.</p>`;
-                        document.body.appendChild(article);
-                    }
-                })
-                .catch(error => console.error('Error fetching post:', error));
-        }
-    });
-</script>
+    <p>
+        One day hopefully I will be able to go to London and watch Chelsea play live in the stadium.
+    </p>
+     <section>Last premier league win 16/17</section>
+    <section>Last champions league win 21</section>
+    </main>
 
 
+    <article>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR99hJZUucqho6-1_auzbLrGUjZG2NE6GxHTqYgcP7FCw&s=10" alt="Chelsea Football Club">
+    </article>
+
+    <aside>
+        Founded March 10, 1905
+    </aside>
+
+    <footer>Andrew Rogers Webpage</footer>
+
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
 </body>
 </html>
+
+
+
