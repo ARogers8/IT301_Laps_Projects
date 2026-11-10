@@ -45,7 +45,6 @@
       cursor: pointer;
     }
 
-    /* Password rules section is hidden at first */
     #password-rules {
       display: none;
       margin: 8px 0 0 0;
@@ -76,7 +75,6 @@
     <label for="password">Password</label>
     <input type="password" id="password" name="password" placeholder="Create a password" required>
 
-    <!-- Password rules (hidden until the user starts typing) -->
     <ul id="password-rules">
       <li id="rule-length" class="invalid">At least 6 characters</li>
       <li id="rule-special" class="invalid">Must include a special character (!@#$...)</li>
@@ -94,17 +92,14 @@
     const ruleSpecial = document.getElementById("rule-special");
     const ruleUppercase = document.getElementById("rule-uppercase");
 
-    // A. Form submit event
     form.addEventListener("submit", function (event) {
       event.preventDefault();
       window.location.href = "success.html";
     });
 
-    // B. Password input event
     passwordInput.addEventListener("input", function () {
       const password = passwordInput.value;
 
-      // Show the rules once the user starts typing
       rules.style.display = "block";
 
       const hasLength = password.length >= 6;
